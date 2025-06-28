@@ -1,0 +1,7 @@
+ nano src/app/globals.css
+
+  Paste this:
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
