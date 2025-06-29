@@ -20,6 +20,7 @@ import {
   Play,
   Pause
 } from 'lucide-react'
+import ChatInterface from './ChatInterface'
 
 interface DashboardProps {
   projectData?: any
@@ -35,7 +36,7 @@ export default function NewDashboard({ projectData = {}, setProjectData = () => 
 
   // Phase 1 Components
   const phase1Components = [
-    { id: 'micro-niche', name: 'Micro-Niche Builder', icon: Search, status: 'ready' },
+    { id: 'micro-niche', name: 'Enhanced Niche Finder', icon: Search, status: 'ready' },
     { id: 'emd-finder', name: 'EMD Finder', icon: Globe, status: 'pending' },
     { id: 'seo-tool', name: 'Unified SEO Tool', icon: BarChart3, status: 'pending' },
     { id: 'design-scraper', name: 'Design Scraper', icon: Palette, status: 'pending' },
@@ -66,7 +67,7 @@ export default function NewDashboard({ projectData = {}, setProjectData = () => 
     }
     
     // Import actual components
-    const MicroNicheBuilder = require('./phase1/MicroNicheBuilder').default
+    const MicroNicheBuilder = require('./phase1/EnhancedNicheFinder').default
     const EMDFinder = require('./phase1/EMDFinder').default
     const UnifiedSEOTool = require('./phase1/UnifiedSEOTool').default
     const DesignScraper = require('./phase1/DesignScraper').default
@@ -117,6 +118,7 @@ export default function NewDashboard({ projectData = {}, setProjectData = () => 
   }
 
   return (
+    <>
     <div className="flex h-screen bg-gray-900">
       {/* Sidebar */}
       <div className={`${sidebarCollapsed ? 'w-16' : 'w-64'} bg-gray-800 border-r border-gray-700 transition-all duration-300`}>
@@ -259,6 +261,10 @@ export default function NewDashboard({ projectData = {}, setProjectData = () => 
         </main>
       </div>
     </div>
+    
+      {/* Chat Interface */}
+      <ChatInterface projectData={projectData} />
+    </>
   )
 }
 
