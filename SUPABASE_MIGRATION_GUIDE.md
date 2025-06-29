@@ -10,9 +10,10 @@ This guide explains the complete database redesign for the RankSavvy Birmingham 
 - `pipeline_data` - Generic step data
 - `chat_messages` - Chat history
 
-### New Schema (13 tables + views):
+### New Schema (17 tables + views):
 - **Phase 1 Tables** (6): niches, domains, seo_analyses, design_inspirations, visual_assets, site_structures, site_pages
 - **Phase 2 Tables** (4): seo_metrics, ad_campaigns, email_campaigns, email_sequences, agent_activities
+- **Enhanced Niche Finder Tables** (4): niche_analyses, keyword_research, competitor_analyses, search_cache
 - **Core Table** (1): projects (enhanced)
 - **Views**: project_overview
 
@@ -87,7 +88,27 @@ Ensures data integrity:
 - `platform`: Google Ads/Facebook/etc
 - `agent_type`: seo/ads/email/controller
 
-### 5. Sample Queries
+#### Enhanced Niche Finder Tables
+- **niche_analyses**: Complete analysis results with geographic data
+- **keyword_research**: Detailed keyword metrics and SERP features
+- **competitor_analyses**: Competitor websites and SEO data
+- **search_cache**: Performance cache for API results
+
+### 5. Enhanced Niche Finder Schema Update
+
+To add the Enhanced Niche Finder tables, run the additional migration:
+```sql
+-- Run the contents of supabase-niche-finder-update.sql
+-- This adds 4 new tables for real-time market analysis
+```
+
+Key features:
+- Stores complete analysis results from Flask backend
+- Tracks individual keywords with search metrics
+- Detailed competitor analysis data
+- Built-in caching for performance
+
+### 6. Sample Queries
 
 #### Get Project Overview
 ```sql
